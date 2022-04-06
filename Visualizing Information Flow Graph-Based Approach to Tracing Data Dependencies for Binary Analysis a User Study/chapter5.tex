@@ -1,0 +1,57 @@
+\chapter{USER STUDY DESIGN}
+The goal of the user study is to determine the effectiveness of the data dependency graph analysis and its \code{angr management} visualization with respect to software debugging and binary analysis. In order to quantitatively and qualitatively determine its effectiveness, a user study was designed in which participants were tasked with solving a series of software debugging and binary analysis challenges. The experiment was split into three phases: introduction, challenge-solving, and survey. During the introduction phase, participants were given an overview of \code{angr management} and the views they were allowed to utilize during the experiment. The challenge-solving phase entailed the participants working through the challenges and answering a series of questions concerning each challenge. After all challenges were completed, the participant would then enter the survey phase where a series of survey questions were administered that captured the participant’s relevant background and overall perceptions of the experiment.
+
+\section{Control vs Experimental Groups}
+Participants were randomly divided into a control and experimental group as determined by a random session key that was used to de-identify user data. A control group was introduced as a means of measuring baseline performance in the challenge-solving phase in comparison to the results of the experiment group in order to gauge effectiveness. Those participants who were assigned to the control group were only provided an overview of angr management, while those who were assigned to the experimental group were provided an additional overview of the functionality of the data dependency graph view. During the challenge-solving phase, the experiment group was allowed to utilize the data dependency view as an aid in analyzing the challenge binary. This feature was disabled for the control group.
+
+\section{Challenges}
+In regard to experiment duration, three challenges were designed for this experiment: two focused on software debugging and one similar to traditional CTF challenges which focused on binary analysis more generally. In the subsequent sections the challenges are described in further detail.
+\begin{itemize}
+    \item $Median$: This software-debugging challenge finds the median of nine numbers by means of four successive calls to a median function. The first three calls were responsible for finding the median of the trisected sub-arrays, with the final call finding the median of the previous three results. Although, a logical comparison error in the median implementation causes the second call to the function to return an incorrect median, cascading to an incorrect result from the final call as well. The user was tasked with determining which call to median resulted in the bug and the nature of the bug. 
+    \item $Follow$: This challenge was designed to emulate a traditional CTF challenge, with the correct input printing a flag. In order to determine the correct input, the participant would have to follow a data dependency maze, following the value 0x1337 as it moves from register \code{rbx} to register \code{rax} through a complicated series of register shuffling with many dead-ends. If the user-specified path was correct, the flag would be printed to standard output. The user was asked to provide details about what they attempted during the solving time, if they were able to solve the challenge, and what their inputs to the program were. 
+    \item $Notes$: This software-debugging challenge asked the user to resolve a mock user bug report in a note-taking application. This binary allows the user to create, read, edit, and delete notes. However, a failure to check for the existence of a note before dereferencing it in the read functionality would cause a null-dereference and segmentation fault. The user was asked to identify the source of the bug and detail its nature.
+\end{itemize}
+
+\section{Framework}
+In order to ease the burden inherent in installing \code{angr} and recording their own data, participants were provided a cloud-based system which enables interaction with a pre-configured virtual machine. After being provided a session key, the user would be able to navigate to the experiment’s domain and begin the experiment at the time of their choice. The framework would walk the participant through a sequence of pages that served as a guide for the user’s session. After getting consent from the user, he or she would be presented with a general introduction to the study. After navigating to the next page, a pre-configured VM accessible via RDP would be cloned and powered on for the user to solve the challenges on. This framework provided a reliable means of recording the user’s progress on the virtual machine and precise timestamps of how long each challenge took each user.  While the system pre-dates the experiment, various customizations were made in order to protect user data and introduce randomization. 
+
+Randomness was key to eliminating bias and uncontrolled variables in this experiment. First, participants were randomly assigned to the control group, unable to use the DDG, or experiment group. The former enabled the experiment to have a measurable baseline. Secondly, the order of challenges was randomized per participant to eliminate the impact of progressive learning and fatigue on the later challenges. To achieve this randomness, the user’s unique session key was used as the seed to a random number generator that decided these factors. Once the sequence was shuffled, the survey pages associated with each challenge were dynamically shuffled to match the new order. While the participation website was easily randomized, the challenge of syncing \code{angr management} on the virtual machine to utilize the same randomness proved more complex.
+
+\section{Custom \code{Angr} Wrapper}
+The design of the experiment required modifications to \code{angr management}, namely support for restricting access to views and loading binaries in a pre-determined sequence. For the sake of this experiment, the views in Table \ref{table:views} were permitted.
+\begin{table}
+    \begin{center}
+        \caption{Permitted Views}
+        \label{table:views}
+        \begin{tabular}{ |c|c| }
+        \hline
+        \textbf{Control} & \textbf{Experimental} \\
+        \hline
+        Functions & Functions \\
+        \hline
+        Disassembly & Disassembly \\
+        \hline
+        Hex & Hex \\
+        \hline
+        Strings & Strings \\
+        \hline
+        Interaction & Interaction \\
+        \hline
+        Console & Console \\
+        \hline
+        Log & Log \\
+        \hline
+        & Data Dependency \\
+        \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+Noticeable omissions include decompilation and symbolic execution. These were removed to address the inherent challenge of designing challenges for a ten-minute time frame. They must be simple enough to be solved within the time frame but complicated enough to warrant analysis. These challenges would be trivial with access to decompilation and symbolic execution. If included, the experiment would be invalidated. Rather, pitting data dependency against disassembly view, which it seeks to complement, makes more sense for the scope of this project. 
+
+The greater challenge occurred when syncing the order of loaded binaries and trace files with the web server. As some form of communication of the randomly generated group membership and challenge order needed to be transmitted from the server to the virtual machine, a binary-encoded JSON file was written to the virtual machine upon creation utilizing the VirtualBox command execution functionality. When the customized \code{angr} wrapper was launched by the participant, it would first check for this file and reorient the order in which it loads binaries to sync with the server.
+
+\section{Survey}
+After completion of each challenge and its associated questionnaire, the user was asked to provide more general feedback by means of a final survey. The participants were asked questions pertaining to their experience in software debugging and vulnerability analysis, their comfort with \code{angr management}, and their overall understanding of the challenges provided. While these questions were asked of all participants, further questions were asked dependent upon group membership. For those users in the control group, an example data dependency graph screenshot was provided. Questions about the perceived usefulness and clarity of the ‘hypothetical’ view accompanied the screenshot. Contrarily, users in the experiment group were asked to rate data dependency graph view in terms of its usefulness and clarity. Additionally, a free-form further feedback field was provided to ascertain the user’s thoughts regarding future improvements that could be made to the view.
+
+\section{Collected Data}
+In addition to the user’s responses to the challenge questionnaires and survey, the time a user took to complete each challenge was recorded. This data will be used to quantify a performance delta between control and experiment groups in terms of challenge-solving speed. Lastly, the user’s VM session was video recorded as a means of verifying user’s participation and to resolve any possible bugs or crashes should they have occurred. No personally identifiable information was tracked or stored in the server’s database. Instead of utilizing a name or email, data is tethered to a session by the random, unique session key provided to each user.  

@@ -1,0 +1,123 @@
+
+\documentclass[12pt,letterpaper]{report}
+\usepackage{natbib}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{dcolumn,array}
+\usepackage{tocloft}
+\usepackage{asudis}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{multirow,booktabs,setspace,caption}
+\usepackage{xfp}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{subcaption}
+
+\usepackage[subsection]{placeins}
+
+%-- Customizing
+\PassOptionsToPackage{hyphens}{url}\usepackage[hidelinks]{hyperref}
+
+\def\code#1{\texttt{#1}}
+
+\graphicspath{ {./images/} }
+
+\makeatletter
+    \def\maxwidth#1{
+        \ifdim
+            \Gin@nat@width>#1 #1
+        \else                
+            \Gin@nat@width
+        \fi}
+\makeatother
+
+\newcommand*{\image}[4]{
+  \begin{figure}[tb]
+    \begin{center}
+      \includegraphics[width=0.8\maxwidth{\textwidth}]{#1}
+      \caption{#2}
+      \label{#3}
+    \end{center}
+  \end{figure}}
+
+
+\DeclareCaptionLabelSeparator*{spaced}{\\[2ex]}
+\captionsetup[table]{textfont=it,format=plain,justification=justified,
+  singlelinecheck=false,labelsep=spaced,skip=0pt}
+\captionsetup[figure]{labelsep=period,labelfont=it,justification=justified,
+  singlelinecheck=false,font=doublespacing}
+
+
+\begin{document}
+%-----------------------front matter
+\pagenumbering{roman}
+\title{Visualizing Information Flow\\ \ \\
+Graph-Based Approach to Tracing Data Dependencies for Binary Analysis: \\ \ \\
+a User Study}
+\author{Bailey Capuano}
+\degreeName{Master of Science}
+\defensemonth{April}
+\gradmonth{May}
+\gradyear{2022}
+\chair{Yan Shoshitaishvili, Co-Chair \\ Ruoyu Wang, Co-Chair \\ Adam Doupe}		
+\maketitle
+\doublespace
+\include{abstract}
+\dedicationpage{\\Thank you to my girlfriend McKenna for her unwavering support and unique ability to ground me when the tasks and deadlines seemed insurmountable. Thank you for being my rock. I am so incredibly lucky to have you by my side, Forvie.}
+\acknowledgementpage{\\ \input{ack}}
+\tableofcontents
+% This puts the word "Page" right justified above everything else.
+\addtocontents{toc}{~\hfill Page\par}
+% Asking LaTeX for a new page here guarantees that the LOF is on a separate page
+% after the TOC ends.
+\newpage
+% Making the LOT and LOF "parts" rather than chapters gets them indented at
+% level -1 according to the chart: top of page 4 of the document at
+% ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/tocloft/tocloft.pdf
+
+% This gets the headers for the LOT right on the first page.  Subsequent pages
+% are handled by the fancyhdr code in the asudis.sty file.
+\addcontentsline{toc}{part}{LIST OF TABLES}
+\listoftables
+\addtocontents{lot}{Table~\hfill Page \par}
+\newpage
+\addcontentsline{toc}{part}{LIST OF FIGURES}
+\addtocontents{toc}{CHAPTER \par}
+\listoffigures
+\addtocontents{lof}{Figure~\hfill Page \par}
+\newpage
+
+% This gets the headers for the LOF right on the first page.  Subsequent pages
+% are handled by the fancyhdr code in the asudis.sty file.
+
+
+%-----------------------body
+\doublespace
+\pagenumbering{arabic}
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+\include{chapter6}
+\include{chapter7}
+\include{chapter8}
+%-----------------------back matter
+{\singlespace
+% Making the references a "part" rather than a chapter gets it indented at
+% level -1 according to the chart: top of page 4 of the document at
+% ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/tocloft/tocloft.pdf
+\addcontentsline{toc}{part}{REFERENCES}
+\bibliographystyle{asudis}
+\bibliography{dis}}
+\renewcommand{\chaptername}{APPENDIX}
+\addtocontents{toc}{APPENDIX \par}
+\appendix
+\include{appendix1}
+\include{vita}
+\end{document}

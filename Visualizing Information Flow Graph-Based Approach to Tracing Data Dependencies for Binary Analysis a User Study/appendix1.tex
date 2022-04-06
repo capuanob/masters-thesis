@@ -1,0 +1,353 @@
+\chapter{RECRUITMENT ADVERTISEMENT}
+\newpage
+In order to recruit participants from the various academic and cybersecurity Discord servers, the following message was sent out:
+Have you taken ASU’s CSE 365, CSE 466, or CSE 545 or do you have a background in reverse engineering, debugging, and exploiting binaries? If you answered “yes” to either of these questions, you are invited to participate in a research study conducted by Arizona State University! You will be asked to solve various challenges using a tool called angr management in order to research the effectiveness of new features on the platform. Prior experience with angr management is not necessary. The research study is approximately 1.75 hours (100 minutes) and can be taken at your time of choice. Your participation will be rewarded with a \$50 Amazon gift card upon completion. For more information, contact <contact details>. Participation in this study is voluntary.
+
+\chapter{SURVEY QUESTIONS}
+\newpage
+\section{Median}
+\begin{enumerate}
+    \item Have you seen this challenge before?
+    \begin{itemize}
+        \item Yes
+        \item No
+        \item I prefer not to answer
+    \end{itemize}
+    \item Briefly describe what you did during this challenge (bullet point explanation is acceptable):
+    \begin{itemize}
+        \item Free form response
+    \end{itemize}
+    \item Were you able to identify the source of the bug?
+    \begin{itemize}
+        \item Yes
+        \item No
+        \item I prefer not to answer
+    \end{itemize}
+    \item After which function call to middle does the error originate?
+    \begin{itemize}
+        \item First
+        \item Second
+        \item Third
+        \item Fourth
+        \item I do not know
+        \item I prefer not to answer
+    \end{itemize}
+    \item Which of the following best describes the nature of the bug?
+    \begin{itemize}
+        \item Memory corruption
+        \item Signed comparison bug
+        \item Logical error
+        \item Integer overflow
+        \item I do not know
+        \item I prefer not to answer
+    \end{itemize}
+    \item If possible, briefly describe the cause of the bug.
+    \begin{itemize}
+        \item Free form response
+    \end{itemize}
+\end{enumerate}
+
+\section{Follow}
+\begin{enumerate}
+    \item Have you seen this challenge before?
+    \begin{itemize}
+        \item Yes
+        \item No
+        \item I prefer not to answer
+    \end{itemize}
+    \item Briefly describe what you did during this challenge (bullet point explanation is acceptable):
+    \begin{itemize}
+        \item Free form response
+    \end{itemize}
+    \item Were you able to solve the challenge?
+    \begin{itemize}
+        \item Yes
+        \item No
+        \item I prefer not to answer
+    \end{itemize}
+    \item What input(s) did you provide to solve this challenge?.
+    \begin{itemize}
+        \item Free form response
+    \end{itemize}
+\end{enumerate}
+
+\section{Notes}
+\begin{enumerate}
+    \item Have you seen this challenge before?
+    \begin{itemize}
+        \item Yes
+        \item No
+        \item I prefer not to answer
+    \end{itemize}
+    \item Briefly describe what you did during this challenge (bullet point explanation is acceptable):
+    \begin{itemize}
+        \item Free form response
+    \end{itemize}
+    \item Were you able to identify the source of the bug?
+    \begin{itemize}
+        \item Yes
+        \item No
+        \item I prefer not to answer
+    \end{itemize}
+    \item In which function call does the bug emerge?
+    \begin{itemize}
+        \item delete\_note
+        \item read\_note
+        \item edit\_note
+        \item create\_note
+        \item I do not know
+        \item I prefer not to answer
+    \end{itemize}
+    \item Which of the following best describes the nature of the bug?
+    \begin{itemize}
+        \item Uninitialized variable
+        \item Signed comparison bug
+        \item Syntax error
+        \item Null dereference
+        \item I do not know
+        \item I prefer not to answer
+    \end{itemize}
+    \item If possible, briefly describe the cause of the bug.
+    \begin{itemize}
+        \item Free form response
+    \end{itemize}
+\end{enumerate}
+
+\section{End Survey}
+\subsection{Control}
+ \begin{figure}[!hb]
+        \centering
+        \includegraphics[scale=0.4]{images/surveyddg.png}
+        \caption{Control group hypothetical data dependency view screenshot}
+        \label{fig:surveyddg}
+\end{figure}
+\begin{enumerate}
+    \item How many years experience do you have in software debugging?
+    \begin{itemize}
+        \item None
+        \item Less than 1 year
+        \item 1 year
+        \item 2 years
+        \item 2+ years
+        \item I prefer not to answer
+    \end{itemize}
+    \item How many years experience do you have in vulnerability analysis?
+    \begin{itemize}
+        \item None
+        \item Less than 1 year
+        \item 1 year
+        \item 2 years
+        \item 2+ years
+        \item I prefer not to answer
+    \end{itemize}
+    \item What is your perceived software debugging skill level?
+    \begin{itemize}
+        \item Novice
+        \item Beginner
+        \item Competent
+        \item Proficient
+        \item Expert
+        \item I prefer not to answer
+    \end{itemize}
+    \item What is your perceived vulnerability analysis skill level?
+    \begin{itemize}
+        \item Novice
+        \item Beginner
+        \item Competent
+        \item Proficient
+        \item Expert
+        \item I prefer not to answer
+    \end{itemize}
+    \item Have you used angr management before your participation today?
+    \begin{itemize}
+        \item Yes
+        \item No
+        \item I prefer not to answer
+    \end{itemize}
+    \item What is your perceived comfort level with angr management?
+    \begin{itemize}
+        \item Novice
+        \item Beginner
+        \item Competent
+        \item Proficient
+        \item Expert
+        \item I prefer not to answer
+    \end{itemize}
+    \item I am sure that I correctly understood what the code of each challenge does
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+    \item I found it difficult to understand these challenges
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+    \item Disassembly view provided adequate information to solve these challenges
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+    \item A data dependency graph view like in the image below (Figure \ref{fig:surveyddg})  would have been helpful
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+    \item This view in the image below (Figure \ref{fig:surveyddg}) seems confusing and unnecessary
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+\end{enumerate}
+
+
+\subsection{Experiment}
+\begin{enumerate}
+    \item How many years experience do you have in software debugging?
+    \begin{itemize}
+        \item None
+        \item Less than 1 year
+        \item 1 year
+        \item 2 years
+        \item 2+ years
+        \item I prefer not to answer
+    \end{itemize}
+    \item How many years experience do you have in vulnerability analysis?
+    \begin{itemize}
+        \item None
+        \item Less than 1 year
+        \item 1 year
+        \item 2 years
+        \item 2+ years
+        \item I prefer not to answer
+    \end{itemize}
+    \item What is your perceived software debugging skill level?
+    \begin{itemize}
+        \item Novice
+        \item Beginner
+        \item Competent
+        \item Proficient
+        \item Expert
+        \item I prefer not to answer
+    \end{itemize}
+    \item What is your perceived vulnerability analysis skill level?
+    \begin{itemize}
+        \item Novice
+        \item Beginner
+        \item Competent
+        \item Proficient
+        \item Expert
+        \item I prefer not to answer
+    \end{itemize}
+    \item Have you used angr management before your participation today?
+    \begin{itemize}
+        \item Yes
+        \item No
+        \item I prefer not to answer
+    \end{itemize}
+    \item What is your perceived comfort level with angr management?
+    \begin{itemize}
+        \item Novice
+        \item Beginner
+        \item Competent
+        \item Proficient
+        \item Expert
+        \item I prefer not to answer
+    \end{itemize}
+    \item I am sure that I correctly understood what the code of each challenge does
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+    \item I saw no need to use data dependency view to solve these challenges
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+    \item Data dependency view aided in understanding the challenges
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+    \item Data dependency view is lacking in valuable information
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+    \item I find data dependency view useful
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+    \item Data dependency view is redundant and unnecessary
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+    \item Data dependency view was clear and easy to understand
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+    \item Data dependency view confused me
+    \begin{itemize}
+        \item Strongly Disagree
+        \item Disagree
+        \item Neutral
+        \item Agree
+        \item Strongly Agree
+        \item I prefer not to answer
+    \end{itemize}
+    \item If any, what improvements could be made to make data dependency view more user friendly?
+    \begin{itemize}
+        \item Free form response
+    \end{itemize}
+\end{enumerate}
